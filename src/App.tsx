@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import { TodoForm } from "./components/TodoForm";
+import { TodoList } from "./components/TodoList";
 import "./global.css";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <div>
       <Header />
       <TodoForm />
-      TODO
+      <TodoList />
     </div>
   );
 }

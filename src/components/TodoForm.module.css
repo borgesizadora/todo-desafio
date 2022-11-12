@@ -1,4 +1,4 @@
-.TodoForm {
+.todoForm {
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 
-.TodoForm input {
+.todoForm input {
   background: var(--gray-500);
   border: 1px solid var(--gray-700);
   border-radius: 8px;
@@ -17,11 +17,11 @@
   flex: 1;
 }
 
-.TodoForm input::placeholder {
+.todoForm input::placeholder {
   color: var(--gray-300);
 }
 
-.TodoForm button {
+.todoForm button {
   background: var(--blue-dark);
   color: var(--gray-100);
   border: none;
@@ -36,6 +36,6 @@
   cursor: pointer;
   transition: background-color 0.1s;
 }
-.TodoForm button:hover {
+.todoForm button:hover {
   background: var(--blue);
 }
