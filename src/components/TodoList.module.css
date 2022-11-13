@@ -1,5 +1,6 @@
 .todoListContainer {
   max-width: 736px;
+  padding: 0 1rem;
   margin: 0 auto;
   margin-top: 4rem;
 }
@@ -27,6 +28,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   background: var(--gray-400);
+  color: var(--gray-200);
   padding: 2px 8px;
   border-radius: 999px;
 }

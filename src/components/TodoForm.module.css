@@ -4,8 +4,9 @@
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
-  width: 736px;
+  max-width: 736px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .todoForm input {
@@ -36,6 +37,10 @@
   cursor: pointer;
   transition: background-color 0.1s;
 }
-.todoForm button:hover {
+.todoForm button:hover:not(:disabled) {
   background: var(--blue);
+}
+
+.todoForm button:disabled {
+  cursor: not-allowed;
 }

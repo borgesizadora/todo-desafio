@@ -2,45 +2,38 @@ import { ClipboardText } from "phosphor-react";
 import { TodoItem } from "./TodoItem";
 import styles from "./TodoList.module.css";
 
-export const TodoList = () => {
-  const todoList = [
-    {
-      id: 1,
-      content:
-        "Lorem ipsum dolor sit amet Deleniti, ab. Adipisci iste itaque quos velit minima perferendis.",
-      isChecked: true,
-    },
-    {
-      id: 2,
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ab. Adipisci iste itaque quos velit minima perferendis.",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ab. Adipisci iste itaque quos velit minima perferendis.",
-      isChecked: false,
-    },
-    {
-      id: 4,
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ab. Adipisci iste itaque quos velit minima perferendis.",
-      isChecked: true,
-    },
-  ];
+interface ITodoList {
+  todoList: TodoItem[];
+  toggleTodoCheck: (id: string) => void;
+  deleteTodo: (id: string) => void;
+}
+
+export const TodoList = ({
+  todoList,
+  toggleTodoCheck,
+  deleteTodo,
+}: ITodoList) => {
+  const tasksCreated = todoList.length;
+
+  const tasksCompleted = todoList.reduce((total, todo) => {
+    if (todo.isChecked) return (total += 1);
+    return total;
+  }, 0);
 
   const isTodoListEmpty = todoList.length === 0;
+
   return (
     <div className={styles.todoListContainer}>
       <header className={styles.info}>
         <div>
           <strong>Tarefas criadas</strong>
-          <span>0</span>
+          <span>{tasksCreated}</span>
         </div>
         <div>
           <strong>Concluídas</strong>
-          <span>0</span>
+          <span>
+            {tasksCreated ? `${tasksCompleted} de ${tasksCreated}` : 0}
+          </span>
         </div>
       </header>
       {isTodoListEmpty ? (
@@ -54,7 +47,12 @@ export const TodoList = () => {
       ) : (
         <div className={styles.todoList}>
           {todoList.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              handleToggleTodoCheck={toggleTodoCheck}
+              handleDeleteTodo={deleteTodo}
+            />
           ))}
         </div>
       )}
